@@ -58,7 +58,8 @@ def text_to_speech_file(text: str, elevenlabs, settings_dict) -> str:
 def main():
     env_path = Path(__file__).parent / '.env'
     load_dotenv(dotenv_path=env_path)
-    ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+    # ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+    ELEVENLABS_API_KEY = st.secrets["ELEVENLABS_API_KEY"]
     elevenlabs = ElevenLabs(
         api_key=ELEVENLABS_API_KEY,
     )
