@@ -12,16 +12,16 @@ def text_to_speech_file(text: str, elevenlabs, settings_dict) -> str:
 
     # Calling the text_to_speech conversion API with detailed parameters
     response = elevenlabs.text_to_speech.convert(
-        voice_id="TbxyDreNOTN8JUWUBMkl",  # Adam pre-made voice
+        voice_id="DIODnUJAKYyzDBMkRdRn",  # Adam pre-made voice
         output_format="mp3_22050_32",
         text=text,
-        model_id="eleven_turbo_v2_5",  # use the turbo model for low latency
+        model_id="eleven_turbo_v2",  # use the turbo model for low latency
         # Optional voice settings that allow you to customize the output
         voice_settings=VoiceSettings(
             stability=settings_dict["stability"],
             similarity_boost=settings_dict["similarity_boost"],
             style=settings_dict["style"],
-            use_speaker_boost=True,
+            use_speaker_boost=False,
             speed=settings_dict["speed"],
         ),
     )
@@ -67,10 +67,10 @@ def main():
 
     with st.sidebar:
         st.header("Settings:")
-        speed = st.slider("Speed", 0.7, 1.2, 0.8, 0.1)
-        stability = st.slider("Stability", 0.0, 1.0, 0.7, 0.1)
-        similarity_boost = st.slider("Similarity Boost", 0.0, 1.0, 0.6, 0.1)
-        style = st.slider("Style", 0.0, 1.0, 0.1, 0.1)
+        speed = st.slider("Speed", 0.7, 1.2, 1.06, 0.02)
+        stability = st.slider("Stability", 0.0, 1.0, 0.6, 0.1)
+        similarity_boost = st.slider("Similarity Boost", 0.0, 1.0, 1.0, 0.1)
+        style = st.slider("Style", 0.0, 1.0, 0.5, 0.1)
     
     settings_dict = {
         "speed": speed,
